@@ -1,0 +1,43 @@
+﻿# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@Web_HostAddress = https://localhost:7288
+
+@BearerToken=JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IjA5MDMyMzM0NDQxIiwicm9sZXMiOiJPcmRlclByb2Nlc3NpbmdBZG1pbixNYXJrZXRlck9mZmljZXIsU291cmNpbmdBZG1pbixNYXJrZXRlckFkbWluLE9yZGVyUHJvY2Vzc2luZ093bmVyLFZpc2l0b3IsRHJpdmVyIiwidXNlSUQiOiI5NjM1IiwiVXNlckFnZW50SWRzIjoiMSIsIklzU3VwZXJVc2VyIjoiVHJ1ZSIsIlVzZXJSb3V0ZUlkcyI6IiIsIlVzZXJTdG9yZUlkcyI6IiIsIm5iZiI6MTY5NzA0OTEwOSwiZXhwIjoxNzAzMTA5NzA5LCJpYXQiOjE2OTcwNDkxMDl9.gc7krnhr7KVuOiqDEIZa8tdWVcvM6fiM6AtBennYsmE
+
+# GET Accounts
+@PageNumber = 1
+@PageSize = 10
+GET {{Web_HostAddress}}/api/v1/Accounts?PageNumber={{PageNumber}}&PageSize={{PageSize}}
+Authorization: Jwt {{BearerToken}}
+
+###
+
+# POST Accounts
+POST {{Web_HostAddress}}/api/Accounts
+Authorization: Jwt {{BearerToken}}
+Content-Type: application/json
+
+// CreateAccountCommand
+{
+  "UserId": 1
+}
+
+###
+
+# PUT Accounts
+PUT {{Web_HostAddress}}/api/Accounts/1
+Authorization: Jwt {{BearerToken}}
+Content-Type: application/json
+
+// UpdateAccountCommand
+{
+  "Id": 1,
+  "UserId": 1
+}
+
+###
+
+# DELETE Accounts
+DELETE {{Web_HostAddress}}/api/Accounts/1
+Authorization: Jwt {{BearerToken}}
+
+###
